@@ -1,0 +1,548 @@
+/*
+ * custom.css
+ * 柏の葉スマートシティ ゼミ研修提案 プレゼンテーション
+ * moon テーマをベースにしたカスタムスタイル
+ */
+
+/* ===== 基本設定 ===== */
+:root {
+  --primary: #0077B6;
+  --primary-light: #00B4D8;
+  --accent-green: #52B788;
+  --accent-cyan: #48CAE4;
+  --dark-bg: #0a0a1a;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #f0f0f0;
+  --text-muted: #999;
+  --glass-blur: blur(12px);
+}
+
+.reveal {
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  color: var(--text-primary);
+}
+
+/* スライド全体の背景 */
+.reveal .slides section {
+  padding: 0.8rem;
+}
+
+.reveal .slides section.title-slide {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== 背景画像付きスライド ===== */
+.has-bg-image {
+  position: relative !important;
+  overflow: hidden;
+}
+
+.has-bg-image .slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.35) saturate(1.1);
+}
+
+.has-bg-image .slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10, 10, 30, 0.7) 0%, rgba(0, 119, 182, 0.3) 100%);
+  z-index: 1;
+}
+
+.has-bg-image .slide-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== タイトルスライド ===== */
+.title-slide h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.2em;
+}
+
+.title-slide .subtitle {
+  font-size: 1.2em;
+  color: var(--text-muted);
+  margin-bottom: 1.5em;
+}
+
+.title-slide .presenter {
+  font-size: 0.85em;
+  color: var(--accent-cyan);
+  letter-spacing: 0.1em;
+}
+
+.title-slide .badge {
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  border: 1px solid var(--primary-light);
+  border-radius: 20px;
+  font-size: 0.6em;
+  color: var(--primary-light);
+  margin-top: 1.5em;
+}
+
+/* ===== カードグリッド ===== */
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.card-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-grid-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-grid-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.2rem 0.8rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.reveal .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 119, 182, 0.2);
+  border-color: var(--primary-light);
+}
+
+.card .icon {
+  font-size: 2.2em;
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+.card h4 {
+  font-size: 0.85em;
+  color: var(--primary-light);
+  margin-bottom: 0.2em;
+}
+
+.card p {
+  font-size: 0.55em;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* スライドタイトル */
+.reveal .slide-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 0.3em;
+  letter-spacing: 0.05em;
+}
+
+.reveal .slide-subtitle {
+  font-size: 0.6em;
+  color: var(--text-muted);
+  margin-bottom: 0.8em;
+}
+
+/* ===== タイムライン（行程） ===== */
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  position: relative;
+  margin-top: 0.3rem;
+}
+
+.timeline-column {
+  position: relative;
+  padding: 0.6rem;
+}
+
+.timeline-column h4 {
+  font-size: 0.8em;
+  color: var(--accent-green);
+  margin-bottom: 0.6rem;
+  text-align: center;
+  border-bottom: 2px solid var(--accent-green);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  text-align: left;
+}
+
+.timeline-item .time-dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  margin-top: 0.35rem;
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.5);
+}
+
+.timeline-item .time-label {
+  font-size: 0.5em;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  min-width: 3.5em;
+}
+
+.timeline-item .time-text {
+  font-size: 0.5em;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.timeline-item .time-text small {
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+/* センター区分線 */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary-light), transparent);
+  transform: translateX(-50%);
+}
+
+/* ===== 予算カード ===== */
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.budget-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 0.8rem 0.5rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.budget-item .budget-label {
+  font-size: 0.55em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.budget-item .budget-icon {
+  font-size: 1.5em;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.budget-item .budget-amount {
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.budget-item .budget-unit {
+  font-size: 0.45em;
+  color: var(--text-muted);
+}
+
+.budget-total {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--accent-green));
+  border-radius: 14px;
+  padding: 0.6rem 2rem;
+  text-align: center;
+}
+
+.budget-total .total-label {
+  font-size: 0.5em;
+  opacity: 0.85;
+  display: block;
+}
+
+.budget-total .total-amount {
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+/* ===== まとめスライド ===== */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1rem 0.6rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.summary-card .icon {
+  font-size: 2em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.summary-card h4 {
+  font-size: 0.75em;
+  color: var(--primary-light);
+  margin-bottom: 0.3rem;
+}
+
+.summary-card p {
+  font-size: 0.5em;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.summary-conclusion {
+  margin-top: 1rem;
+  font-size: 0.85em;
+  color: var(--accent-green);
+  font-weight: 600;
+}
+
+/* ===== 画像カード（視察場所） ===== */
+.image-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reveal .image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 119, 182, 0.2);
+  border-color: var(--primary-light);
+}
+
+.image-card img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.image-card:hover img {
+  filter: brightness(1);
+}
+
+.image-card .card-body {
+  padding: 0.4rem 0.6rem 0.6rem;
+}
+
+.image-card .card-body h4 {
+  font-size: 0.7em;
+  color: var(--primary-light);
+  margin-bottom: 0.1rem;
+}
+
+.image-card .card-body p {
+  font-size: 0.48em;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ===== 区切り線 ===== */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-light), var(--accent-green));
+  border: none;
+  margin: 0.5rem auto;
+}
+
+/* ===== 中央揃え補助 ===== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+
+/* ===== フッター用バッジ ===== */
+.slide-meta {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 0.3em;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* ===== 選択カラー連携 ===== */
+.reveal .controls {
+  color: var(--primary-light);
+}
+
+.reveal .progress {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary-light);
+}
+
+/* ================================================================
+   @media print — PDF出力 (?print-pdf) 対応
+   ================================================================ */
+@media print {
+  /* 背景・色を強制表示 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .reveal {
+    background: #fff !important;
+    color: #222 !important;
+  }
+
+  .reveal .slides {
+    background: #fff !important;
+  }
+
+  .reveal .slides section {
+    padding: 0 !important;
+  }
+
+  /* 背景画像付きスライドを白背景に */
+  .has-bg-image .slide-bg {
+    display: none !important;
+  }
+
+  .has-bg-image .slide-overlay {
+    display: none !important;
+  }
+
+  /* カード類を白背景＋黒文字に */
+  .card,
+  .budget-item,
+  .summary-card,
+  .image-card,
+  .timeline-item {
+    background: #f5f8ff !important;
+    border-color: #ccc !important;
+    color: #222 !important;
+    break-inside: avoid;
+  }
+
+  .card p,
+  .budget-item .budget-label,
+  .summary-card p,
+  .image-card .card-body p,
+  .timeline-item .time-text,
+  .timeline-item .time-text small {
+    color: #444 !important;
+  }
+
+  .card h4,
+  .summary-card h4,
+  .image-card .card-body h4,
+  .timeline-item .time-label {
+    color: #0077B6 !important;
+  }
+
+  .budget-item .budget-amount {
+    color: #0077B6 !important;
+  }
+
+  .title-slide h1 {
+    -webkit-text-fill-color: #0077B6 !important;
+    color: #0077B6 !important;
+  }
+
+  .title-slide .presenter {
+    color: #00B4D8 !important;
+  }
+
+  .summary-conclusion {
+    color: #52B788 !important;
+  }
+
+  .budget-total {
+    background: linear-gradient(135deg, #0077B6, #52B788) !important;
+    color: #fff !important;
+  }
+
+  .timeline-column h4 {
+    color: #52B788 !important;
+    border-bottom-color: #52B788 !important;
+  }
+
+  .timeline-item .time-dot {
+    background: #00B4D8 !important;
+    box-shadow: none !important;
+  }
+
+  .reveal .slide-title {
+    color: #0077B6 !important;
+  }
+
+  .section-divider {
+    background: linear-gradient(90deg, #00B4D8, #52B788) !important;
+  }
+
+  .slide-meta {
+    color: #999 !important;
+  }
+
+  .image-card img {
+    filter: none !important;
+  }
+
+  /* 不要装飾をオフ */
+  .reveal .controls,
+  .reveal .progress {
+    display: none !important;
+  }
+
+  .timeline::before {
+    background: linear-gradient(to bottom, #00B4D8, transparent) !important;
+  }
+
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    color: #222 !important;
+  }
+}
